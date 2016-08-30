@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Instagram Collection</title>
+    {% load staticfiles %}
+
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/animate.min.css' %}" rel="stylesheet"> 
+	<link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+	<link href="{% static 'main/css/responsive.css' %}" rel="stylesheet">
+</head><!--/head-->
+<body>
+	<div class="container-center">
+		<form class="" action="{% url 'main:enter_name' %}" method="POST">
+			{% csrf_token %}
+			{{ name_form }}
+			<input id="show" type="submit" class="btn btn-common" value="ENTER NAME">
+		</form>
+	</div>
+	<script type="text/javascript" src="{% static 'main/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/bootstrap.min.js' %}"></script>
+</body>
+<html>

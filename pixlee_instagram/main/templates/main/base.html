@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Instagram Collection</title>
+    {% load staticfiles %}
+
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/animate.min.css' %}" rel="stylesheet"> 
+	<link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+	<link href="{% static 'main/css/responsive.css' %}" rel="stylesheet">
+</head><!--/head-->
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'main:index' %}">Instagram Collector</a>
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'main:show_collection' %}">Collection</a></li>
+                    <li><a href="{% url 'main:search' %}">Search</a></li>
+                </ul>
+            </div>
+            <form action="{% url 'main:logout' %}">
+                <input class="navbar-text navbar-right btn btn-danger" type="submit" value="LOGOUT">
+            </form>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock content %}
+    <script type="text/javascript" src="{% static 'main/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/bootstrap.min.js' %}"></script>
+</body>
+<html>

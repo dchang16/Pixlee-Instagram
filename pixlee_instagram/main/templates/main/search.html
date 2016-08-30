@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+{% block content %}
+	<div class="container-center">
+		<form action="{% url 'main:search_tags' %}" method="POST">
+			{% csrf_token %}
+			{{ search }}
+			<input id="search" type="submit" class="btn btn-common" value="SEARCH">
+		</form>
+	</div>
+
+{% endblock %}

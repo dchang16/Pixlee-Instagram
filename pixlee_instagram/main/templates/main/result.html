@@ -1,0 +1,47 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<h1> Showing results for #{{ tag }} </h1>
+		<form action="{% url 'main:save_to_collection' %}" method="POST">
+			{% csrf_token %}
+		    <input id="save" type="submit" class="btn btn-primary" value="SAVE COLLECTION">
+		</form>
+	</div>
+	</br>
+	<div class="row">
+	{% for item in items %}
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail">
+				<img class="instagram-picture" src="{{ item.url }}" onerror="this.src='{% static 'main/images/default.jpg' %}'">
+				<div class="caption">
+					<h3>{{ item.user }}</h3>
+				</div>
+				<a href="{{ item.link }}" class="btn btn-primary" role="button">Link</a>
+			</div>
+		</div>
+	{% endfor %}
+	</div>
+	<div class="row">
+		{% if page > 0 %}
+			<form class="col-xs-1" action="{% url 'main:prev_tag' %}" method="POST">
+				{% csrf_token %}
+				<input type="submit" class="btn btn-primary" value="PREV">
+			</form>
+		{% endif %}
+		{% if items %}
+			<form class="col-xs-1" action="{% url 'main:next_tag' %}" method="POST">
+				{% csrf_token %}
+				<input type="submit" class="btn btn-primary" value="NEXT">
+			</form>
+		{% endif %}
+	</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
