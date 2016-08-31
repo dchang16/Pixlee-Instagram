@@ -15,7 +15,16 @@
 	{% for item in items %}
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
+				{% if item.type == "image" %}
 				<img class="instagram-picture" src="{{ item.url }}" onerror="this.src='{% static 'main/images/default.jpg' %}'">
+				{% endif %}
+				{% if item.type == "video" %}
+				<div class="instagram-video" style="padding-left:40px">
+					<video width="175px" height="170px" controls>
+						<source src="{{ item.url }}" type="video/mp4">
+					</video>
+				</div>
+				{% endif %}
 				<div class="caption">
 					<h3>{{ item.user }}</h3>
 				</div>
